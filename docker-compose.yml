@@ -1,0 +1,19 @@
+version: "3.8"
+
+networks:
+  test:
+
+services:
+  php:
+    build:
+      args:
+        user: 'test'
+        uid: ${DOCKER_UID}
+      context: ./docker/php
+      dockerfile: ./Dockerfile
+    container_name: test-php
+    working_dir: /var/www/html
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - test
