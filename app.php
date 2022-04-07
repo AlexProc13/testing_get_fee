@@ -1,23 +1,27 @@
 <?php
 
+
+var_dump($argv[1]);
 foreach (explode("\n", file_get_contents($argv[1])) as $row) {
 
     if (empty($row)) break;
-    $p = explode(",",$row);
+    $p = explode(",", $row);
     $p2 = explode(':', $p[0]);
     $value[0] = trim($p2[1], '"');
     $p2 = explode(':', $p[1]);
     $value[1] = trim($p2[1], '"');
     $p2 = explode(':', $p[2]);
     $value[2] = trim($p2[1], '"}');
-
-    $binResults = file_get_contents('https://lookup.binlist.net/' .$value[0]);
+//var_dump($value);
+    $binResults = file_get_contents('https://lookup.binlist.net/' . $value[0]);
+    var_dump($binResults);
     if (!$binResults)
         die('error!');
     $r = json_decode($binResults);
     $isEu = isEu($r->country->alpha2);
 
-    $rate = @json_decode(file_get_contents('https://api.exchangeratesapi.io/latest'), true)['rates'][$value[2]];
+    $rate = @json_decode(file_get_contents('http://api.exchangeratesapi.io/latest?access_key=6ec20ccb4aa0f78802b452d9a8fc54ae'), true)['rates'][$value[2]];
+    //var_dump($binResults);
     if ($value[2] == 'EUR' or $rate == 0) {
         $amntFixed = $value[1];
     }
@@ -29,9 +33,10 @@ foreach (explode("\n", file_get_contents($argv[1])) as $row) {
     print "\n";
 }
 
-function isEu($c) {
+function isEu($c)
+{
     $result = false;
-    switch($c) {
+    switch ($c) {
         case 'AT':
         case 'BE':
         case 'BG':

@@ -2,6 +2,10 @@
 
 require 'vendor/autoload.php';
 
-$objFoo = App\Email::fromString('alexproc1313@gmail.com');
+$parserService = new App\Services\Parser\BaseParser($argv[1]);
+$binService = new App\Services\Bin\BinSource();
+$rateService = new App\Services\Rate\RateSource();
+$commissionService = new App\Services\Commission\BaseCommission();
+$viewService = new App\Services\View\BaseView();
 
-var_dump($objFoo);
+App\Controller\CommissionController::start($parserService, $binService, $rateService, $commissionService, $viewService);
