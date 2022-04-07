@@ -7,8 +7,8 @@ class BaseCommission extends CommissionService
     public function get($item, $countryByBin, $rate)
     {
         dd($item, $countryByBin, $rate);
-        $isEuCountry = $this->isEuCountry($item);
-        dd(2);
+        $isEuCountry = $this->isEuCountry($countryByBin);
+        dd($isEuCountry);
 //
 //        if ($value[2] == 'EUR' or $rate == 0) {
 //            $amntFixed = $value[1];
