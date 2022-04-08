@@ -13,7 +13,6 @@ class BaseCommission extends CommissionService
         $amount = $amount * $commissionFee;
 
         return $this->roundUpAmount($amount);
-
     }
 
     protected function isEuCountry($countryCode): string

@@ -10,7 +10,7 @@ use App\Services\Commission\CommissionService;
 
 class CommissionController
 {
-    static public function start(ParserService $parserService, BinService $binService, RateService $rateService, CommissionService $commissionService, ViewService $viewService): void
+    public static function start(ParserService $parserService, BinService $binService, RateService $rateService, CommissionService $commissionService, ViewService $viewService): void
     {
         $content = $parserService->parse();
         foreach ($content as $item) {
