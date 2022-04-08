@@ -1,15 +1,15 @@
 ## App for testing
 
 ### Get started:
-- run
+- run in terminal tab
 ```
 docker-compose up
 ```
-- old app
+- run old app
 ```
 docker-compose exec php php app.php input.txt
 ```
-- new app
+- tun new app
 ```
 docker-compose exec php php newApp.php input.txt
 ```
