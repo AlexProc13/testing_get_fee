@@ -2,8 +2,6 @@
 
 namespace App\Services\Bin;
 
-use Throwable;
-
 class BinSource extends BinService
 {
     public function get($bin)

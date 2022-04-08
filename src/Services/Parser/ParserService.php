@@ -11,5 +11,5 @@ abstract class ParserService
         $this->fileName = $fileName;
     }
 
-    abstract public function parse();
+    abstract public function parse(): array;
 }
