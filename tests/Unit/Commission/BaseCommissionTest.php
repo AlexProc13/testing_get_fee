@@ -38,6 +38,6 @@ class BaseCommissionTest extends TestCase
 
         //Division by zero
         $this->expectException(Throwable::class);
-        $givenFee = $service->get($amount, $currency, $countryCode, $rate);
+        $service->get($amount, $currency, $countryCode, $rate);
     }
 }
