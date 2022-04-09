@@ -1,6 +1,12 @@
 ## App for testing
 
 ### Get started:
+- run
+```
+php app.php input.txt
+```
+
+### Get started (by docker):
 - run in terminal tab
 ```
 docker-compose up

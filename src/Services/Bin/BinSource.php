@@ -4,7 +4,9 @@ namespace App\Services\Bin;
 
 class BinSource extends BinService
 {
-    public function get($bin)
+    protected const URL = 'https://lookup.binlist.net/';
+
+    public function getCountryByBin($bin)
     {
         $response = $this->request($bin);
 
@@ -17,7 +19,7 @@ class BinSource extends BinService
 
     protected function request($bin)
     {
-        $url = 'https://lookup.binlist.net/';
+        $url = self::URL;
         $response = file_get_contents($url . $bin);
         return $response;
     }

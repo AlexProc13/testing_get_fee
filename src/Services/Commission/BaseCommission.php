@@ -4,11 +4,11 @@ namespace App\Services\Commission;
 
 class BaseCommission extends CommissionService
 {
-    public function get($item, $countryCode, $rate): float
+    public function get($amount, $currency, $countryCode, $rate): float
     {
         $commissionFee = $this->getCommissionFee($countryCode);
 
-        $amount = $this->getAmountByCurrency($item['amount'], $item['currency'], $rate);
+        $amount = $this->getAmountByCurrency($amount, $currency, $rate);
 
         $amount = $amount * $commissionFee;
 

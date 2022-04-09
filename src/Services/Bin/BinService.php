@@ -4,7 +4,7 @@ namespace App\Services\Bin;
 
 abstract class BinService
 {
-    abstract public function get($bin);
+    abstract public function getCountryByBin($bin);
 
     abstract protected function request($bin);
 

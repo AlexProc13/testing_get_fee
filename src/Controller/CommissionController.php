@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Exception;
 use App\Services\Bin\BinService;
 use App\Services\View\ViewService;
 use App\Services\Rate\RateService;
@@ -14,15 +15,15 @@ class CommissionController
     {
         $content = $parserService->parse();
         foreach ($content as $item) {
-            $countryByBin = $binService->get($item['bin']);
+            $countryCode = $binService->getCountryByBin($item['bin']);
 
-            if (is_null($countryByBin)) {
-                die('error!');
+            if (is_null($countryCode)) {
+                throw new Exception('bin service is not working.');
             }
 
-            $rate = $rateService->get($item['currency']);
+            $rate = $rateService->getRateByCurrency($item['currency']);
 
-            $commission = $commissionService->get($item, $countryByBin, $rate);
+            $commission = $commissionService->get($item['amount'], $item['currency'], $countryCode, $rate);
 
             $viewService->view($commission);
         }
