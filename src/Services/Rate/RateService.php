@@ -4,7 +4,14 @@ namespace App\Services\Rate;
 
 abstract class RateService
 {
-    abstract public function getRateByCurrency($countryCode);
+    protected object $client;
+
+    public function __construct($client)
+    {
+        $this->client = $client;
+    }
+
+    abstract public function getRateByCountry($countryCode);
 
     abstract protected function request();
 

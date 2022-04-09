@@ -20,7 +20,7 @@ class BinSource extends BinService
     protected function request($bin)
     {
         $url = self::URL;
-        $response = file_get_contents($url . $bin);
+        $response = $this->client->get($url . $bin);
         return $response;
     }
 

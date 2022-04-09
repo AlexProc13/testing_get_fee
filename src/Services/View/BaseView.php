@@ -4,9 +4,8 @@ namespace App\Services\View;
 
 class BaseView extends ViewService
 {
-    public function view($result): void
+    public function view($result, $lineBreak = "\n"): void
     {
-        echo $result;
-        print "\n";
+        print $result . $lineBreak;
     }
 }

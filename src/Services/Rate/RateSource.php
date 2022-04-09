@@ -8,7 +8,7 @@ class RateSource extends RateService
 {
     protected const URL = 'http://api.exchangeratesapi.io/latest?access_key=6ec20ccb4aa0f78802b452d9a8fc54ae';
 
-    public function getRateByCurrency($countryCode)
+    public function getRateByCountry($countryCode)
     {
         $response = $this->request();
 
@@ -19,12 +19,12 @@ class RateSource extends RateService
         return $this->format($response, $countryCode);
     }
 
-    protected function request()
+    public function request()
     {
         try {
             //I want to make the same result of initial script but don't want use @ i think try catch is good
             $url = self::URL;
-            $response = file_get_contents($url);
+            $response = $this->client->get($url);
             return $response;
         } catch (Throwable $exception) {
             return false;

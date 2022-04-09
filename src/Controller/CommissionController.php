@@ -21,7 +21,7 @@ class CommissionController
                 throw new Exception('bin service is not working.');
             }
 
-            $rate = $rateService->getRateByCurrency($item['currency']);
+            $rate = $rateService->getRateByCountry($item['currency']);
 
             $commission = $commissionService->get($item['amount'], $item['currency'], $countryCode, $rate);
 
