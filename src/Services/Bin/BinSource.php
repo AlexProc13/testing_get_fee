@@ -19,7 +19,7 @@ class BinSource extends BinService
 
     protected function request($bin)
     {
-        $url = self::URL;
+        $url = $this->addAuth(self::URL);
         $response = $this->client->get($url . $bin);
         return $response;
     }
@@ -28,5 +28,10 @@ class BinSource extends BinService
     {
         $data = json_decode($response, true);
         return $data['country']['alpha2'];
+    }
+
+    protected function addAuth($link)
+    {
+        return $link;
     }
 }

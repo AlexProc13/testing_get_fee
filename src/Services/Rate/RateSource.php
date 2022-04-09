@@ -6,7 +6,7 @@ use Throwable;
 
 class RateSource extends RateService
 {
-    protected const URL = 'http://api.exchangeratesapi.io/latest?access_key=6ec20ccb4aa0f78802b452d9a8fc54ae';
+    protected const URL = 'http://api.exchangeratesapi.io/latest';
 
     public function getRateByCountry($countryCode)
     {
@@ -23,7 +23,7 @@ class RateSource extends RateService
     {
         try {
             //I want to make the same result of initial script but don't want use @ i think try catch is good
-            $url = self::URL;
+            $url = $this->addAuth(self::URL);
             $response = $this->client->get($url);
             return $response;
         } catch (Throwable $exception) {
@@ -41,5 +41,12 @@ class RateSource extends RateService
         }
 
         return $rate;
+    }
+
+    protected function addAuth($link)
+    {
+        //todo
+        $token = $_ENV['BASE_RATE_KEY'];
+        return $link . "?access_key={$token}";
     }
 }

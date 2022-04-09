@@ -16,4 +16,6 @@ abstract class RateService
     abstract protected function request();
 
     abstract protected function format($response, $countryCode);
+
+    abstract protected function addAuth($link);
 }

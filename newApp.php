@@ -6,6 +6,9 @@ $settings = new App\Services\Settings\Settings();
 $settings->disableWarnings();
 
 //create app depends
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
 $client = new App\Services\Client\Client();
 
 $parserService = new App\Services\Parser\BaseParser($argv[1]);
