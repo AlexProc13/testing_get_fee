@@ -49,6 +49,7 @@ class BaseCommission extends CommissionService
     {
         $baseCurrency = 'EUR';
         //I don't want change result of script but `$amntFixed` is probably undefined
+        //I know that caused error - i want to get the same result
         $amountByCurrency = $amount;
         if ($currency != $baseCurrency or $rate > 0) {
             $amountByCurrency = $amount / $rate;

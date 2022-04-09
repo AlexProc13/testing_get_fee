@@ -2,8 +2,8 @@
 
 namespace Tests\Unit\Commission;
 
+use Throwable;
 use Faker\Factory;
-use App\Services\Client\Client;
 use PHPUnit\Framework\TestCase;
 use App\Services\Commission\BaseCommission;
 
@@ -24,5 +24,20 @@ class BaseCommissionTest extends TestCase
 
         $this->assertIsFloat($givenFee);
         $this->assertEquals($givenNumberDecimalDigits, $expectedNumberDecimalDigits);
+    }
+
+    public function testErrorGetCommissionCheckRound()
+    {
+        $faker = Factory::create();
+
+        $service = new BaseCommission();
+        $amount = $faker->randomFloat(4, 1, 1000);
+        $countryCode = $faker->word;//country not EUR
+        $currency = $faker->currencyCode;
+        $rate = 0;
+
+        //Division by zero
+        $this->expectException(Throwable::class);
+        $givenFee = $service->get($amount, $currency, $countryCode, $rate);
     }
 }
