@@ -4,6 +4,8 @@
 - run
 ```
 php app.php input.txt
+composer install
+php newApp.php input.txt
 ```
 
 ### Get started (by docker linux container):
