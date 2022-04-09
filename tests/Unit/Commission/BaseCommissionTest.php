@@ -21,6 +21,8 @@ class BaseCommissionTest extends TestCase
         $givenFee = $service->get($amount, $currency, $countryCode, $rate);
         $expectedNumberDecimalDigits = 2;
         $givenNumberDecimalDigits = strlen(substr(strrchr($givenFee, "."), 1));//todo
+
+        $this->assertIsFloat($givenFee);
         $this->assertEquals($givenNumberDecimalDigits, $expectedNumberDecimalDigits);
     }
 }
