@@ -26,7 +26,7 @@ class BinSource extends BinService
 
     protected function format($response)
     {
-        $data = json_decode($response);
-        return $data->country->alpha2;
+        $data = json_decode($response, true);
+        return $data['country']['alpha2'];
     }
 }
