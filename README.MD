@@ -9,7 +9,7 @@ php newApp.php input.txt
 ```
 
 ### Get started (by docker linux container):
-- Open terminal tab. Create `.env` file and set up user id `id $USER`. Then run
+- Open terminal tab. Create `.env` file and set up its. Then run
 ```
 docker-compose up
 ```
