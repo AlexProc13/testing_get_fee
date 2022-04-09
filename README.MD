@@ -5,7 +5,7 @@
 ```
 php app.php input.txt
 composer install
-php php newApp.php input.txt
+php newApp.php input.txt
 ```
 
 ### Get started (by docker linux container):
