@@ -46,7 +46,11 @@ class RateSource extends RateService
     protected function addAuth($link)
     {
         //todo
-        $token = $_ENV['BASE_RATE_KEY'];
-        return $link . "?access_key={$token}";
+        if (isset($_ENV['BASE_RATE_KEY'])) {
+            $token = $_ENV['BASE_RATE_KEY'];
+            $link = $link . "?access_key={$token}";
+        }
+
+        return $link;
     }
 }
