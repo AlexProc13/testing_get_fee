@@ -9,7 +9,7 @@ use App\Services\Commission\BaseCommission;
 
 class BaseCommissionTest extends TestCase
 {
-    public function testGetCommissionCheckRound()
+    public function testGetCommissionCheck()
     {
         $faker = Factory::create();
 
@@ -19,14 +19,11 @@ class BaseCommissionTest extends TestCase
         $currency = $faker->currencyCode;
         $rate = $faker->randomFloat(4, 1, 3);
         $givenFee = $service->get($amount, $currency, $countryCode, $rate);
-        $expectedNumberDecimalDigits = 2;
-        $givenNumberDecimalDigits = strlen(substr(strrchr($givenFee, "."), 1));//todo
 
         $this->assertIsFloat($givenFee);
-        $this->assertEquals($givenNumberDecimalDigits, $expectedNumberDecimalDigits);
     }
 
-    public function testErrorGetCommissionCheckRound()
+    public function testErrorGetCommissionCheck()
     {
         $faker = Factory::create();
 
