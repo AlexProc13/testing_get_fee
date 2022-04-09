@@ -15,8 +15,9 @@ docker-compose up
 ```
 docker-compose exec php php app.php input.txt
 ```
-- tun new app
+- run new app
 ```
+docker-compose exec php composer install
 docker-compose exec php php newApp.php input.txt
 ```
 - run tests
